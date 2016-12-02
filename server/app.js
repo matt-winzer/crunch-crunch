@@ -1,12 +1,19 @@
 var express = require('express');
+var cors = require('cors');
 var app = express();
+
+
+// var express = require('express')
+//   , cors = require('cors')
+//   , app = express();
+
+
+app.use(cors());
 
 app.listen(3000, function (){
 console.log("working!");
 
 });
-
-
 
 const granolas = [{
   name: "Dirty Hippie Feet",
@@ -23,4 +30,8 @@ const granolas = [{
   description: "So delicious you feel tripping acid at a Phish show!",
   vegan: "Yes",
   gluten: "Yes"
-}]
+}];
+
+app.get('/granolas', function(req, res, next){
+  res.json(granolas);
+});
